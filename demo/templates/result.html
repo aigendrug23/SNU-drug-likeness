@@ -1,23 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>Drug Prediction using PyTorch</title>
-</head>
+    <link
+      rel="stylesheet"
+      href="http://cdn.bokeh.org/bokeh/release/bbokeh-3.3.0.min.css"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="http://cdn.bokeh.org/bokeh/release/bokeh-3.3.0.min.js"
+    ></script>
+    {{ script|safe }}
+  </head>
 
-<body class="text-center">
-    <form class="form-signin" method=post enctype=multipart/form-data>
-        <h1 class="h3 mb-3 font-weight-normal">INPUT: {{ smiles }}</h1>
-        <h3 class="h5 mb-3 font-weight-normal">ADMET Prediction</h3>
-        <h5 class="h5 mb-3 font-weight-normal">BBB: {{ result_bbb }}</h5>
-        <h5 class="h5 mb-3 font-weight-normal">CYP3A4: {{ result_cyp }}</h5>
-        <h5 class="h5 mb-3 font-weight-normal">Solubility: {{ result_sol }}</h5>
-        <h5 class="h5 mb-3 font-weight-normal">Clearance: {{ result_clr }}</h5>
-        <h3 class="h6 mb-3 font-weight-normal">Drug-Likeness: {{ drug_likeness }}</h3>
-        <p class="mt-5 mb-3 text-muted">Built using Pytorch, Flask and Love</p>
-    </form>
-</body>
-
+  <body class="text-center">
+    <div>
+      <h1 class="h3 mb-3 font-weight-normal">INPUT: {{ smiles }}</h1>
+      <form method="POST">
+        <span>Enter new SMILES </span>
+        <input name="smiles" />
+        <input type="submit" />
+      </form>
+      <h3>ADMET Prediction</h3>
+      <h4>Blood-Brain Barrier Permeability: {{ result_bbb }}</h4>
+      <font size="2"
+        >As a membrane separating circulating blood and brain extracellular
+        fluid, the blood-brain barrier (BBB) is the protection layer that blocks
+        most foreign drugs. Thus the ability of a drug to penetrate the barrier
+        to deliver to the site of action forms a crucial challenge in
+        development of drugs for central nervous system From MoleculeNet.</font
+      >
+      <h4>CYP3A4: {{ result_cyp }}</h4>
+      <font size="2"
+        >CYP3A4 is an important enzyme in the body, mainly found in the liver
+        and in the intestine. It oxidizes small foreign organic molecules
+        (xenobiotics), such as toxins or drugs, so that they can be removed from
+        the body.</font
+      >
+      <h4>Solubility: {{ result_sol }}</h4>
+      <font size="2"
+        >Aqeuous solubility measures a drug's ability to dissolve in water. Poor
+        water solubility could lead to slow drug absorptions, inadequate
+        bioavailablity and even induce toxicity. More than 40% of new chemical
+        entities are not soluble.</font
+      >
+      <h4>Clearance: {{ result_clr }}</h4>
+      <font size="2"
+        >Drug clearance is defined as the volume of plasma cleared of a drug
+        over a specified time period and it measures the rate at which the
+        active drug is removed from the body.</font
+      >
+      <h2 style="margin-top: 1cm; margin-bottom: 1cm;">Drug-Likeness: {{ drug_likeness }}</h2>
+    </div>
+    <div class="bokeh">
+      <h3 class="h3 mb-3 font-weight-normal">Chemical Space</h3>
+      {{ div|safe }}
+    </div>
+    <div>
+      <p>Built using Pytorch, Flask and Love</p>
+    </div>
+  </body>
 </html>
