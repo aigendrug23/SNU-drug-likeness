@@ -2,7 +2,6 @@ from bokeh.plotting import figure, show, output_file
 from bokeh.models import HoverTool, ColumnDataSource
 from bokeh.embed import components
 
-
 def plot(df):
     source = ColumnDataSource(
         data=dict(

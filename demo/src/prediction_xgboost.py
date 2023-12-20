@@ -1,14 +1,4 @@
 import numpy as np
-import xgboost
-
-
-def load_xgboost_model(model_json_file):
-    # load XGBoost model by `xgboost_model.json`
-
-    xgb_model = xgboost.XGBClassifier()
-    xgb_model.load_model(model_json_file)
-
-    return xgb_model
 
 
 def predict_single_vector(xgb_model, embedding_vector):

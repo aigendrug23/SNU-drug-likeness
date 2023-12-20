@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from src.inference import get_prediction
 from src.visualization import plot
+from src.model_config import get_tsne_result
 
 app = Flask(__name__)
 
@@ -11,24 +12,15 @@ def landing():
         "landing.html",
     )
 
-
-from pandas import DataFrame
-
-df = DataFrame()
-df["1"] = [1, 2, 3]
-df["2"] = [1, 2, 3]
-df["image_url"] = ["", "", ""]
-df["color"] = ["red", "blue", "green"]
-
-
 @app.route("/", methods=["POST"])
 def show_result():
     smiles = request.form["smiles"]
     result_bbb, result_cyp, result_sol, result_clr, drugLikeness = get_prediction(
         smiles
     )
-
-    script, div = plot(df)
+    
+    tsne_result = get_tsne_result()
+    script, div = plot(tsne_result)
 
     return render_template(
         "result.html",
