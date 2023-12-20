@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, send_from_directory
 from src.inference import get_prediction
 from src.visualization import plot
 from src.model_config import get_tsne_result
@@ -12,13 +12,14 @@ def landing():
         "landing.html",
     )
 
+
 @app.route("/", methods=["POST"])
 def show_result():
     smiles = request.form["smiles"]
     result_bbb, result_cyp, result_sol, result_clr, drugLikeness = get_prediction(
         smiles
     )
-    
+
     tsne_result = get_tsne_result()
     script, div = plot(tsne_result)
 
@@ -33,6 +34,11 @@ def show_result():
         script=script,
         div=div,
     )
+
+
+@app.route("/images/<path:filename>")
+def serve_image(filename):
+    return send_from_directory("images", filename)
 
 
 if __name__ == "__main__":
