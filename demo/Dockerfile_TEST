@@ -1,0 +1,5 @@
+FROM aigendrug:1.3
+
+COPY . /usr/src/app/
+
+# ENTRYPOINT [ ]

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Drug Prediction using PyTorch</title>
+</head>
+
+<body class="text-center">
+    <form class="form-signin" method=post enctype=multipart/form-data>
+        <h1 class="h3 mb-3 font-weight-normal">INPUT: {{ smiles }}</h1>
+        <h3 class="h5 mb-3 font-weight-normal">ADMET Prediction</h3>
+        <h5 class="h5 mb-3 font-weight-normal">BBB: {{ result_bbb }}</h5>
+        <h5 class="h5 mb-3 font-weight-normal">CYP3A4: {{ result_cyp }}</h5>
+        <h5 class="h5 mb-3 font-weight-normal">Solubility: {{ result_sol }}</h5>
+        <h5 class="h5 mb-3 font-weight-normal">Clearance: {{ result_clr }}</h5>
+        <h3 class="h6 mb-3 font-weight-normal">Drug-Likeness: {{ drug_likeness }}</h3>
+        <p class="mt-5 mb-3 text-muted">Built using Pytorch, Flask and Love</p>
+    </form>
+</body>
+
+</html>
