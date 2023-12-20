@@ -29,7 +29,7 @@ def show_result():
         result_cyp=f"{(result_cyp * 100):.1f}%",
         result_sol=f"{result_sol:.4f}",
         result_clr=f"{result_clr:.4f}",
-        drug_likeness=f"{drugLikeness}%",
+        drug_likeness=f"{drugLikeness:.2f}%",
         script=script,
         div=div,
     )
