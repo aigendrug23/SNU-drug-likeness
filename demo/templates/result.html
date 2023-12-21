@@ -29,34 +29,78 @@
       </form>
       <h3>ADMET Prediction</h3>
       <h4>Blood-Brain Barrier Permeability: {{ result_bbb }}</h4>
-      <font size="2"
-        >As a membrane separating circulating blood and brain extracellular
-        fluid, the blood-brain barrier (BBB) is the protection layer that blocks
-        most foreign drugs. Thus the ability of a drug to penetrate the barrier
-        to deliver to the site of action forms a crucial challenge in
-        development of drugs for central nervous system From MoleculeNet.</font
-      >
+      <div>
+        <font size="2"
+          >This molecule has {{ result_bbb }} chance of crossing the blood-brain
+          barrier, indicating its potential impact on the central nervous
+          system.</font
+        >
+      </div>
+      <div>
+        <font size="2"
+          >As a membrane separating circulating blood and brain extracellular
+          fluid, the blood-brain barrier (BBB) is the protection layer that
+          blocks most foreign drugs. Thus the ability of a drug to penetrate the
+          barrier to deliver to the site of action forms a crucial challenge in
+          development of drugs for central nervous system From
+          MoleculeNet.</font
+        >
+      </div>
       <h4>CYP3A4: {{ result_cyp }}</h4>
-      <font size="2"
-        >CYP3A4 is an important enzyme in the body, mainly found in the liver
-        and in the intestine. It oxidizes small foreign organic molecules
-        (xenobiotics), such as toxins or drugs, so that they can be removed from
-        the body.</font
-      >
+      <div>
+        <font size="2"
+          >CYP3A4 has {{ result_cyp }} chance of breaking down this
+          molecule.</font
+        >
+      </div>
+      <div>
+        <font size="2"
+          >CYP3A4 is an important enzyme in the body, mainly found in the liver
+          and in the intestine. It oxidizes small foreign organic molecules
+          (xenobiotics), such as toxins or drugs, so that they can be removed
+          from the body.</font
+        >
+      </div>
       <h4>Solubility: {{ result_sol }}</h4>
-      <font size="2"
-        >Aqeuous solubility measures a drug's ability to dissolve in water. Poor
-        water solubility could lead to slow drug absorptions, inadequate
-        bioavailablity and even induce toxicity. More than 40% of new chemical
-        entities are not soluble.</font
-      >
+      <div>
+        <font size="2"
+          >Compounds with 0 and higher solubility value are highly soluble,
+          those in the range of 0 to −2 are soluble, those in the range of −2 to
+          −4 are slightly soluble and insoluble if less than −4.</font
+        >
+      </div>
+      <div>
+        <font size="2"
+          >Aqeuous solubility measures a drug's ability to dissolve in water.
+          Poor water solubility could lead to slow drug absorptions, inadequate
+          bioavailablity and even induce toxicity. More than 40% of new chemical
+          entities are not soluble.</font
+        >
+      </div>
       <h4>Clearance: {{ result_clr }}</h4>
-      <font size="2"
-        >Drug clearance is defined as the volume of plasma cleared of a drug
-        over a specified time period and it measures the rate at which the
-        active drug is removed from the body.</font
-      >
-      <h2 style="margin-top: 1cm; margin-bottom: 1cm;">Drug-Likeness: {{ drug_likeness }}</h2>
+      <div>
+        <font size="2"
+          >1g of this compound in human hepatocytes will be removed at a rate of
+          {{ result_clr }} mL per minute.</font
+        >
+      </div>
+      <div>
+        <font size="2"
+          >Drug clearance is defined as the volume of plasma cleared of a drug
+          over a specified time period and it measures the rate at which the
+          active drug is removed from the body.</font
+        >
+      </div>
+
+      <h2 style="margin-top: 1cm">
+        Drug-Likeness: {{ drug_likeness }}
+      </h2>
+      <div style=" margin-bottom: 1cm">
+        <font size="2"
+          >This drug has {{ drug_likeness }} chance of being suitable as a drug.</font
+        >
+      </div>
+      
     </div>
     <div class="bokeh">
       <h3 class="h3 mb-3 font-weight-normal">Chemical Space</h3>
