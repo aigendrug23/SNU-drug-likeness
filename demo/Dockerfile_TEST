@@ -1,4 +1,4 @@
-FROM aigendrug:1.3
+FROM kimkun07/aigendrug23:1.1
 
 COPY . /usr/src/app/
 

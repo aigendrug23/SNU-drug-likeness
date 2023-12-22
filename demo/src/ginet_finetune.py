@@ -121,15 +121,16 @@ class GINet_Feat(nn.Module):
 
         return h
 
-    def load_my_state_dict(self, state_dict):
+    def load_my_state_dict(self, prefix, state_dict):
         own_state = self.state_dict()
         for name, param in state_dict.items():
-            if name not in own_state:
+            own_name = name.removeprefix(prefix)
+            if own_name not in own_state:
                 continue
             if isinstance(param, nn.parameter.Parameter):
                 # backwards compatibility for serialized parameters
                 param = param.data
-            own_state[name].copy_(param)
+            own_state[own_name].copy_(param)
 
 
 class Feat_MTL(nn.Module):
@@ -180,15 +181,16 @@ class Feat_MTL(nn.Module):
     def forward(self, data):
         return torch.cat([head(data) for head in self.pred_heads], dim=1)
 
-    def load_my_state_dict(self, state_dict):
+    def load_my_state_dict(self, prefix, state_dict):
         own_state = self.state_dict()
         for name, param in state_dict.items():
-            if name not in own_state:
+            own_name = name.removeprefix(prefix)
+            if own_name not in own_state:
                 continue
             if isinstance(param, nn.parameter.Parameter):
                 # backwards compatibility for serialized parameters
                 param = param.data
-            own_state[name].copy_(param)
+            own_state[own_name].copy_(param)
 
 
 class GINet_Feat_MTL(nn.Module):
@@ -223,13 +225,13 @@ class GINet_Feat_MTL(nn.Module):
         out = self.mtl(feat)
         return out
 
-    def load_my_state_dict(self, state_dict):
-        self.gin.load_my_state_dict(state_dict)
-        self.mtl.load_my_state_dict(state_dict)
+    def load_my_state_dict(self, prefix, state_dict):
+        self.gin.load_my_state_dict(prefix + "gin.", state_dict)
+        self.mtl.load_my_state_dict(prefix + "mtl.", state_dict)
 
 
 # Pretrained MolCLR Model
-def load_pre_trained_weights(model, device, location=None):
+def load_pre_trained_weights(model, device, location=None, prefix = ""):
     if location:
         checkpoint_file = location
         print("Use fine-tuned weights.")
@@ -242,7 +244,7 @@ def load_pre_trained_weights(model, device, location=None):
             print("Pre-trained weights not found. Training from scratch.")
 
     state_dict = torch.load(checkpoint_file, map_location=device)
-    model.load_my_state_dict(state_dict)
+    model.load_my_state_dict(prefix, state_dict)
     print("Loaded pre-trained model with success.")
 
     return model
