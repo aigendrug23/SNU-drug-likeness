@@ -1,5 +1,5 @@
-FROM kimkun07/aigendrug23:1.1
+FROM kimkun07/aigendrug23:1.2
 
 COPY . /usr/src/app/
 
-ENTRYPOINT [ ]
+# ENTRYPOINT [ ]
