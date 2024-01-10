@@ -7,7 +7,7 @@ import pandas as pd
 model_config = {
     "admet": "models/MolCLR_[BBB, CYP3A4, Clearance, Solubility]_sc-12.13_1830.pt",
     "dcc": "models/xgboost_model.json",
-    "chem_space": "models/chem_space.csv",
+    "chem_space": "models/chem_space_new.csv",
     "visual": "models/tsne_perplexity20.csv",
 }
 

@@ -1,4 +1,3 @@
-from .tdc_constant import TDC
 from .dataset_mtl import smilesToGeometric
 from .prediction_xgboost import predict_single_vector
 from .prediction_admet import get_embedding_vector, get_adme_from_vector
@@ -6,7 +5,6 @@ from .model_config import (
     get_model_admet,
     get_model_dcc,
     get_chem_space,
-    get_tsne_result,
 )
 from .visualization import infer_plot, infer_dimension_reduction
 import torch
@@ -15,7 +13,6 @@ import pandas as pd
 encoder, predictionHead = get_model_admet()
 dccModel = get_model_dcc()
 chem_space = get_chem_space()
-# tsne_result = get_tsne_result()
 
 
 def get_prediction(smiles):
